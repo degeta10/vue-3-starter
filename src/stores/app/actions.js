@@ -4,5 +4,5 @@ export function setLoading(value) {
 
 export function setLocale(value) {
   this.locale = value
-  localStorage.setItem('app-lang', this.locale)
+  localStorage.setItem('lang', this.locale)
 }

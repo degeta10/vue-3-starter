@@ -1,4 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { pinia } from '@/main'
+import { useAuthStore } from '@/stores/auth'
 
 const Login = () => import('@/views/Auth/LoginPage.vue')
 const Home = () => import('@/views/HomePage.vue')
@@ -6,7 +8,13 @@ const Home = () => import('@/views/HomePage.vue')
 const routes = [
   { path: '/', redirect: '/home' },
   { path: '/login', component: Login },
-  { path: '/home', component: Home },
+  {
+    path: '/home',
+    component: Home,
+    meta: {
+      requiresAuth: true,
+    },
+  },
 ]
 
 const router = createRouter({
@@ -14,16 +22,17 @@ const router = createRouter({
   routes: routes,
 })
 
-const checkAuthenticated = () => {
-  return JSON.parse(localStorage.getItem('user')) && localStorage.getItem('access_token')
-    ? true
-    : false
-}
-
 router.beforeEach((to) => {
-  const isAuthenticated = checkAuthenticated()
-  if (to.path === '/login' && isAuthenticated) return '/home'
-  if (to.path !== '/login' && !isAuthenticated) return '/login'
+  const authStore = useAuthStore(pinia)
+  const isAuthenticated = authStore.isAuthenticated
+
+  if (to.meta.requiresAuth && !isAuthenticated) {
+    return '/login'
+  }
+
+  if (to.path === '/login' && isAuthenticated) {
+    return '/home'
+  }
 })
 
 export default router

@@ -1,14 +1,16 @@
 import axios from 'axios'
 import { useAuthStore } from '@/stores/auth'
+import router from '@/router'
+
+const baseApi = axios.create({
+  baseURL: import.meta.env.VITE_API_BASE_URL,
+  withCredentials: true,
+})
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
-})
-
-api.interceptors.request.use((config) => {
-  const access_token = localStorage.getItem('access_token')
-  if (access_token) config.headers.Authorization = `Bearer ${access_token}`
-  return config
+  withCredentials: true,
+  withXSRFToken: true,
 })
 
 api.interceptors.response.use(
@@ -17,10 +19,10 @@ api.interceptors.response.use(
     if (error.response?.status === 401 && window.location.pathname !== '/login') {
       const authStore = useAuthStore()
       authStore.logout()
-      window.location.href = '/'
+      router.push('/login')
     }
     return Promise.reject(error)
   },
 )
 
-export default api
+export { api, baseApi }

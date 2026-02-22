@@ -1,39 +1,37 @@
-# Logs
-logs
-*.log
+# Node modules
+node_modules/
 npm-debug.log*
-yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-lerna-debug.log*
 
-node_modules
+# Vite / build output
+dist/
+build/
+
+# Local environment files
+.env
+.env.*.local
+.env.local
+
+# Logs
+*.log
+
+# OS generated files
 .DS_Store
-dist
-dist-ssr
-coverage
-*.local
+Thumbs.db
 
 # Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
 
-*.tsbuildinfo
+# Optional npm cache folder
+.npm
 
+# Optional eslint cache
 .eslintcache
 
-# Cypress
-/cypress/videos/
-/cypress/screenshots/
-
-# Vitest
-__screenshots__/
-
-# Vite
-*.timestamp-*-*.mjs
+# Temporary folders
+.temp
+tmp/
