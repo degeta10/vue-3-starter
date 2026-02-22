@@ -1,0 +1,29 @@
+{
+  "app": {
+    "title": "Inicio de Vue 3",
+    "copyright": "© 2026 Aplicación Vue 3 Starter. Todos los derechos reservados.",
+    "language": "Idioma"
+  },
+  "header": {
+    "home": "Inicio",
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión",
+    "english": "Inglés",
+    "spanish": "Español"
+  },
+  "auth": {
+    "loginTitle": "Iniciar sesión",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "loginButton": "Iniciar sesión",
+    "invalidCredentials": "Correo electrónico o contraseña inválidos",
+    "loginFailed": "Error al iniciar sesión. Por favor, inténtalo de nuevo."
+  },
+  "home": {
+    "welcome": "Bienvenido a la página de inicio",
+    "protectedContent": "Esta es una ruta protegida. Debes estar conectado para ver este contenido.",
+    "userInfo": "Información del usuario",
+    "name": "Nombre",
+    "email": "Correo electrónico"
+  }
+}

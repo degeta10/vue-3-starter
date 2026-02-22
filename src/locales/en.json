@@ -1,0 +1,29 @@
+{
+  "app": {
+    "title": "Vue 3 Starter",
+    "copyright": "© 2026 Vue 3 Starter App. All rights reserved.",
+    "language": "Language"
+  },
+  "header": {
+    "home": "Home",
+    "login": "Login",
+    "logout": "Logout",
+    "english": "English",
+    "spanish": "Spanish"
+  },
+  "auth": {
+    "loginTitle": "Login",
+    "email": "Email",
+    "password": "Password",
+    "loginButton": "Login",
+    "invalidCredentials": "Invalid email or password",
+    "loginFailed": "Login failed. Please try again."
+  },
+  "home": {
+    "welcome": "Welcome to the Home Page",
+    "protectedContent": "This is a protected route. You must be logged in to see this content.",
+    "userInfo": "User Info",
+    "name": "Name",
+    "email": "Email"
+  }
+}
