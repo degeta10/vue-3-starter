@@ -3,11 +3,13 @@ import { pinia } from '@/main'
 import { useAuthStore } from '@/stores/auth'
 
 const Login = () => import('@/views/Auth/LoginPage.vue')
+const Register = () => import('@/views/Auth/RegisterPage.vue')
 const Home = () => import('@/views/HomePage.vue')
 
 const routes = [
   { path: '/', redirect: '/home' },
   { path: '/login', component: Login },
+  { path: '/register', component: Register },
   {
     path: '/home',
     component: Home,

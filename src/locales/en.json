@@ -8,16 +8,22 @@
     "home": "Home",
     "login": "Login",
     "logout": "Logout",
+    "register": "Register",
     "english": "English",
     "spanish": "Spanish"
   },
   "auth": {
     "loginTitle": "Login",
+    "registerTitle": "Register",
+    "name": "Name",
     "email": "Email",
     "password": "Password",
+    "passwordConfirmation": "Confirm Password",
     "loginButton": "Login",
+    "registerButton": "Register",
     "invalidCredentials": "Invalid email or password",
-    "loginFailed": "Login failed. Please try again."
+    "loginFailed": "Login failed. Please try again.",
+    "registerFailed": "Registration failed. Please try again."
   },
   "home": {
     "welcome": "Welcome to the Home Page",

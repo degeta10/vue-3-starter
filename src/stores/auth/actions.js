@@ -32,3 +32,9 @@ export async function initializeApp() {
     this.user = null
   }
 }
+
+export async function register(payload) {
+  const res = await api.post('/register', payload)
+  if (res.data.success) return true
+  return false
+}
