@@ -9,20 +9,28 @@
             </div>
             <nav>
                 <ul class="flex space-x-4">
-                    <li v-if="isAuthenticated">
-                        <router-link to="/" class="hover:underline">{{ $t('header.home') }}</router-link>
-                    </li>
-                    <li v-if="!isAuthenticated">
-                        <router-link to="/login" class="hover:underline">{{ $t('header.login') }}</router-link>
-                    </li>
-                    <li v-else>
-                        <button @click="handleLogout" class="hover:underline">{{ $t('header.logout') }}</button>
-                    </li>
+                    <template v-if="isAuthenticated">
+                        <li>
+                            <router-link to="/" class="hover:underline">{{ $t('header.home') }}</router-link>
+                        </li>
+                        <li>
+                            <button @click="handleLogout" class="hover:underline">{{ $t('header.logout') }}</button>
+                        </li>
+                    </template>
+                    <template v-else>
+                        <li v-if="!isAuthenticated">
+                            <router-link to="/login" class="hover:underline">{{ $t('header.login') }}</router-link>
+                        </li>
+                    </template>
                     <li>
                         <select @change="changeLanguage($event.target.value)"
                             class="bg-gray-700 text-white p-1 rounded">
-                            <option value="en">{{ $t('header.english') }}</option>
-                            <option value="es">{{ $t('header.spanish') }}</option>
+                            <option value="en" :selected="currentLocale === 'en'">
+                                {{ $t('header.english') }}
+                            </option>
+                            <option value="es" :selected="currentLocale === 'es'">
+                                {{ $t('header.spanish') }}
+                            </option>
                         </select>
                     </li>
                 </ul>
@@ -43,6 +51,7 @@ const authStore = useAuthStore();
 const appStore = useAppStore();
 const router = useRouter();
 const isAuthenticated = computed(() => authStore.isAuthenticated);
+const currentLocale = computed(() => appStore.getLocale);
 
 const handleLogout = async () => {
     try {
