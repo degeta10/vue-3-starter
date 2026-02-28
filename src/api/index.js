@@ -18,7 +18,7 @@ api.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401 && window.location.pathname !== '/login') {
       const authStore = useAuthStore()
-      authStore.logout()
+      authStore.clearUser()
       router.push('/login')
     }
     return Promise.reject(error)

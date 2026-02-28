@@ -13,7 +13,9 @@ const pinia = createPinia()
 app.use(pinia)
 
 const authStore = useAuthStore()
-await authStore.initializeApp()
+await authStore.initializeApp().catch(() => {
+  // silent fail — interceptor already handles redirect
+})
 
 const appStore = useAppStore()
 const i18n = createAppI18n(appStore)
