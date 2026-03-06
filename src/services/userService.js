@@ -1,5 +1,5 @@
+import { USER_V1 as v1 } from '@/api/endpoints/users'
 import { apiV1 } from '@/api/client'
-import { USER_ENDPOINTS as v1 } from '@/api/endpoints/v1/users'
 
 export const userService = {
   async getUser() {

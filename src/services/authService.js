@@ -1,5 +1,5 @@
-import { apiV1, baseApi } from '@/api/client'
-import { AUTH_ENDPOINTS as v1 } from '@/api/endpoints/v1/auth'
+import { AUTH_V1 as v1 } from '@/api/endpoints/auth'
+import { baseApi, apiV1 } from '@/api/client'
 
 export const authService = {
   async login(payload) {

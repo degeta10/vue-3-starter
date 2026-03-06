@@ -47,15 +47,11 @@ const authStore = useAuthStore()
 const handleLogin = async () => {
     loginApiErrors.value = ''
     try {
-        const res = await authStore.login({
+        await authStore.login({
             email: email.value,
             password: password.value,
         })
-        if (res) {
-            router.push('/home')
-        } else {
-            loginApiErrors.value = { message: t('auth.invalidCredentials') }
-        }
+        router.push('/home')
     } catch (err) {
         loginApiErrors.value = err.response?.data || { message: t('auth.loginFailed') }
     }
