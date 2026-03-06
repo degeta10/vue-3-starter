@@ -18,8 +18,12 @@
                         </li>
                     </template>
                     <template v-else>
-                        <li v-if="!isAuthenticated">
+                        <li>
                             <router-link to="/login" class="hover:underline">{{ $t('header.login') }}</router-link>
+                        </li>
+                        <li>
+                            <router-link to="/register" class="hover:underline">{{ $t('header.register')
+                                }}</router-link>
                         </li>
                     </template>
                     <li>

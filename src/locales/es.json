@@ -8,16 +8,22 @@
     "home": "Inicio",
     "login": "Iniciar sesión",
     "logout": "Cerrar sesión",
+    "register": "Registrarse",
     "english": "Inglés",
     "spanish": "Español"
   },
   "auth": {
     "loginTitle": "Iniciar sesión",
+    "registerTitle": "Registrarse",
+    "name": "Nombre",
     "email": "Correo electrónico",
     "password": "Contraseña",
+    "passwordConfirmation": "Confirmar contraseña",
     "loginButton": "Iniciar sesión",
+    "registerButton": "Registrarse",
     "invalidCredentials": "Correo electrónico o contraseña inválidos",
-    "loginFailed": "Error al iniciar sesión. Por favor, inténtalo de nuevo."
+    "loginFailed": "Error al iniciar sesión. Por favor, inténtalo de nuevo.",
+    "registerFailed": "Error al registrarse. Por favor, inténtalo de nuevo."
   },
   "home": {
     "welcome": "Bienvenido a la página de inicio",
