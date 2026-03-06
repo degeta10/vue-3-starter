@@ -9,6 +9,8 @@
     "login": "Login",
     "logout": "Logout",
     "register": "Register",
+    "profile": "Profile",
+    "account": "Account",
     "english": "English",
     "spanish": "Spanish"
   },
@@ -31,5 +33,15 @@
     "userInfo": "User Info",
     "name": "Name",
     "email": "Email"
+  },
+  "profile": {
+    "title": "User Profile",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "passwordConfirmation": "Confirm Password",
+    "updateButton": "Update Profile",
+    "updateSuccess": "Profile updated successfully.",
+    "updateFailed": "Failed to update profile. Please try again."
   }
 }

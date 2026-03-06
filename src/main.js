@@ -6,6 +6,7 @@ import router from './router'
 import { createAppI18n } from './i18n'
 import { useAuthStore } from './stores/auth'
 import { useAppStore } from './stores/app'
+import clickOutside from '@/directives/clickOutside'
 
 const app = createApp(App)
 const pinia = createPinia()
@@ -22,6 +23,7 @@ const i18n = createAppI18n(appStore)
 
 app.use(router)
 app.use(i18n)
+app.directive('click-outside', clickOutside)
 app.mount('#app')
 
 export { pinia }

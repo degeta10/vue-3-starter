@@ -9,6 +9,8 @@
     "login": "Iniciar sesión",
     "logout": "Cerrar sesión",
     "register": "Registrarse",
+    "profile": "Perfil",
+    "account": "Cuenta",
     "english": "Inglés",
     "spanish": "Español"
   },
@@ -31,5 +33,15 @@
     "userInfo": "Información del usuario",
     "name": "Nombre",
     "email": "Correo electrónico"
+  },
+  "profile": {
+    "title": "Perfil de usuario",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "passwordConfirmation": "Confirmar contraseña",
+    "updateButton": "Actualizar perfil",
+    "updateSuccess": "Perfil actualizado con éxito.",
+    "updateFailed": "Error al actualizar el perfil. Por favor, inténtalo de nuevo."
   }
 }

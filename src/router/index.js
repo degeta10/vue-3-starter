@@ -5,6 +5,7 @@ import { useAuthStore } from '@/stores/auth'
 const Login = () => import('@/views/Auth/LoginPage.vue')
 const Register = () => import('@/views/Auth/RegisterPage.vue')
 const Home = () => import('@/views/HomePage.vue')
+const ProfilePage = () => import('@/views/Auth/ProfilePage.vue')
 
 const routes = [
   { path: '/', redirect: '/home' },
@@ -13,6 +14,13 @@ const routes = [
   {
     path: '/home',
     component: Home,
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: '/profile',
+    component: ProfilePage,
     meta: {
       requiresAuth: true,
     },

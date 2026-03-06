@@ -59,6 +59,7 @@ const authStore = useAuthStore();
 
 const handleRegister = async () => {
     try {
+        registerApiErrors.value = null;
         const res = await authStore.register(
             {
                 name: name.value,

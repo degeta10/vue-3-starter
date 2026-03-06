@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import state from './state'
 import { isAuthenticated, getUser } from './getters'
-import { login, register, logout, initializeApp, clearUser } from './actions'
+import { login, register, logout, initializeApp, clearUser, updateProfile } from './actions'
 
 export const useAuthStore = defineStore('auth', {
   state,
@@ -12,5 +12,6 @@ export const useAuthStore = defineStore('auth', {
     logout,
     initializeApp,
     clearUser,
+    updateProfile,
   },
 })
