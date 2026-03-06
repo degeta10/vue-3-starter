@@ -43,14 +43,15 @@
     </div>
 </template>
 <script setup>
-import { useAuthStore } from '@/stores/auth';
+import { useUserStore } from '@/stores/user';
 import { ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
-const authStore = useAuthStore();
-const username = ref(authStore.user.name);
-const email = ref(authStore.user.email);
+const userStore = useUserStore();
+const currentUser = userStore.getUser;
+const username = ref(currentUser.name);
+const email = ref(currentUser.email);
 const password = ref('');
 const passwordConfirmation = ref('');
 const profileApiErrors = ref(null);
@@ -59,7 +60,7 @@ const profileApiSuccess = ref(null);
 const updateProfile = async () => {
     try {
         profileApiErrors.value = null;
-        await authStore.updateProfile({
+        await userStore.updateProfile({
             name: username.value,
             email: email.value,
             ...(password.value

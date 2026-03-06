@@ -14,4 +14,8 @@ export const authService = {
   async register(payload) {
     return await apiV1.post(v1.REGISTER, payload)
   },
+
+  async me() {
+    return await apiV1.get(v1.ME)
+  },
 }

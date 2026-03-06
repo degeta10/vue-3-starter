@@ -48,7 +48,7 @@
                         </li>
                         <li>
                             <router-link to="/register" class="hover:underline">{{ $t('header.register')
-                            }}</router-link>
+                                }}</router-link>
                         </li>
                     </template>
                 </ul>
@@ -64,18 +64,21 @@ import { useRouter } from 'vue-router';
 import logo from '@/assets/logo.svg';
 import { useI18n } from 'vue-i18n'
 import { ref } from 'vue'
+import { useUserStore } from '@/stores/user';
 
 const open = ref(false)
 const { locale } = useI18n()
 const authStore = useAuthStore();
 const appStore = useAppStore();
+const userStore = useUserStore();
 const router = useRouter();
-const isAuthenticated = computed(() => authStore.isAuthenticated);
+const isAuthenticated = computed(() => userStore.isAuthenticated);
 const currentLocale = computed(() => appStore.getLocale);
 
 const handleLogout = async () => {
     try {
         const res = await authStore.logout();
+        open.value = false;
         if (res) router.push('/login');
     } catch (error) {
         console.error('Logout failed:', error);

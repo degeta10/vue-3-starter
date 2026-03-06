@@ -1,12 +1,13 @@
 import { useAppStore } from '../app'
+import { useUserStore } from '../user'
 import { authService } from '@/services/authService'
-import { userService } from '@/services/userService'
 
 export async function login(payload) {
   const res = await authService.login(payload)
 
   if (res.data.success) {
-    this.user = res.data.data
+    const userStore = useUserStore()
+    userStore.setUser(res.data.data)
     return true
   }
 
@@ -16,20 +17,18 @@ export async function login(payload) {
 export async function logout() {
   const res = await authService.logout()
   if (res.data.success) {
-    this.clearUser()
+    const userStore = useUserStore()
+    userStore.clearUser()
     return true
   }
   return false
 }
 
-export function clearUser() {
-  this.user = null
-}
-
 export async function initializeApp() {
-  const res = await userService.getUser()
+  const res = await authService.me()
   if (res.data.success) {
-    this.user = res.data.data
+    const userStore = useUserStore()
+    userStore.setUser(res.data.data)
     const appStore = useAppStore()
     appStore.setLocale(localStorage.getItem('lang'))
   } else {
@@ -39,10 +38,5 @@ export async function initializeApp() {
 
 export async function register(payload) {
   const res = await authService.register(payload)
-  return res.data.success
-}
-
-export async function updateProfile(payload) {
-  const res = await userService.updateProfile(payload)
   return res.data.success
 }

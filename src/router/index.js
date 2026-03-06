@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { pinia } from '@/main'
-import { useAuthStore } from '@/stores/auth'
+import { useUserStore } from '@/stores/user'
 
 const Login = () => import('@/views/Auth/LoginPage.vue')
 const Register = () => import('@/views/Auth/RegisterPage.vue')
@@ -33,8 +33,8 @@ const router = createRouter({
 })
 
 router.beforeEach((to) => {
-  const authStore = useAuthStore(pinia)
-  const isAuthenticated = authStore.isAuthenticated
+  const userStore = useUserStore(pinia)
+  const isAuthenticated = userStore.isAuthenticated
 
   if (to.meta.requiresAuth && !isAuthenticated) {
     return '/login'
