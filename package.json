@@ -10,7 +10,8 @@
     "lint": "run-s lint:*",
     "lint:oxlint": "oxlint . --fix",
     "lint:eslint": "eslint . --fix --cache",
-    "format": "prettier --write --experimental-cli src/"
+    "format": "prettier --write --experimental-cli src/",
+    "prepare": "husky"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.2.0",
@@ -23,6 +24,8 @@
     "vue-router": "^5.0.2"
   },
   "devDependencies": {
+    "@commitlint/cli": "^20.4.3",
+    "@commitlint/config-conventional": "^20.4.3",
     "@eslint/js": "^9.39.2",
     "@vitejs/plugin-vue": "^6.0.4",
     "eslint": "^9.39.2",
@@ -30,6 +33,7 @@
     "eslint-plugin-oxlint": "~1.46.0",
     "eslint-plugin-vue": "~10.8.0",
     "globals": "^17.3.0",
+    "husky": "^9.1.7",
     "npm-run-all2": "^8.0.4",
     "oxlint": "~1.47.0",
     "prettier": "3.8.1",
