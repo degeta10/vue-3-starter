@@ -22,7 +22,9 @@
                     </div>
                 </div>
                 <button class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200"
-                    type="submit">{{ $t('auth.loginButton') }}</button>
+                    type="submit">
+                    {{ $t('auth.loginButton') }}
+                </button>
             </form>
         </div>
     </div>
@@ -47,7 +49,7 @@ const handleLogin = async () => {
     try {
         const res = await authStore.login({
             email: email.value,
-            password: password.value
+            password: password.value,
         })
         if (res) {
             router.push('/home')
