@@ -16,8 +16,8 @@
 
 <script setup>
 import { computed } from 'vue'
-import { useUserStore } from '@/stores/user'
+import { useAuthStore } from '@/stores/auth'
 
-const userStore = useUserStore()
-const user = computed(() => userStore.getUser)
+const authStore = useAuthStore()
+const user = computed(() => authStore.getMe)
 </script>

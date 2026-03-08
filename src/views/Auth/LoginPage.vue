@@ -56,6 +56,7 @@ const authStore = useAuthStore()
 
 const handleLogin = async () => {
   loginApiErrors.value = ''
+
   try {
     await authStore.login({
       email: email.value,

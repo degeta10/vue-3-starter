@@ -18,4 +18,8 @@ export const authService = {
   async me() {
     return await apiV1.get(v1.ME)
   },
+
+  async updateMe(payload) {
+    return await apiV1.patch(v1.ME, payload)
+  },
 }

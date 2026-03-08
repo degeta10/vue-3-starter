@@ -68,22 +68,19 @@
   </header>
 </template>
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useAuthStore } from '@/stores/auth'
 import { useAppStore } from '@/stores/app'
 import { useRouter } from 'vue-router'
 import logo from '@/assets/logo.svg'
 import { useI18n } from 'vue-i18n'
-import { ref } from 'vue'
-import { useUserStore } from '@/stores/user'
 
 const open = ref(false)
 const { locale } = useI18n()
 const authStore = useAuthStore()
 const appStore = useAppStore()
-const userStore = useUserStore()
 const router = useRouter()
-const isAuthenticated = computed(() => userStore.isAuthenticated)
+const isAuthenticated = computed(() => authStore.isAuthenticated)
 const currentLocale = computed(() => appStore.getLocale)
 
 const handleLogout = async () => {

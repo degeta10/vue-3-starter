@@ -14,17 +14,28 @@
       >
         {{ profileApiSuccess.message }}
       </div>
-      <form @submit.prevent="updateProfile">
+      <form @submit.prevent="updateMe">
         <div class="mb-4">
-          <label class="block text-gray-700 mb-2">{{ $t('profile.email') }}</label>
-          <input v-model="email" class="w-full px-3 py-2 border rounded" type="email" disabled />
+          <label class="block text-gray-700 mb-2" for="email">{{ $t('profile.email') }}</label>
+          <input
+            v-model="email"
+            class="w-full px-3 py-2 border rounded"
+            type="email"
+            id="email"
+            disabled
+          />
           <p v-if="profileApiErrors?.email" class="text-red-500 text-sm mt-1">
             {{ profileApiErrors.email }}
           </p>
         </div>
         <div class="mb-4">
-          <label class="block text-gray-700 mb-2">{{ $t('profile.name') }}</label>
-          <input v-model="username" class="w-full px-3 py-2 border rounded" type="text" />
+          <label class="block text-gray-700 mb-2" for="username">{{ $t('profile.name') }}</label>
+          <input
+            v-model="username"
+            class="w-full px-3 py-2 border rounded"
+            type="text"
+            id="username"
+          />
           <p v-if="profileApiErrors?.name" class="text-red-500 text-sm mt-1">
             {{ profileApiErrors.name }}
           </p>
@@ -67,13 +78,13 @@
   </div>
 </template>
 <script setup>
-import { useUserStore } from '@/stores/user'
+import { useAuthStore } from '@/stores/auth'
 import { ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
-const userStore = useUserStore()
-const currentUser = userStore.getUser
+const authStore = useAuthStore()
+const currentUser = authStore.getMe
 const username = ref(currentUser.name)
 const email = ref(currentUser.email)
 const password = ref('')
@@ -81,10 +92,10 @@ const passwordConfirmation = ref('')
 const profileApiErrors = ref(null)
 const profileApiSuccess = ref(null)
 
-const updateProfile = async () => {
+const updateMe = async () => {
   try {
     profileApiErrors.value = null
-    await userStore.updateProfile({
+    await authStore.updateMe({
       name: username.value,
       email: email.value,
       ...(password.value

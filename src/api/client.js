@@ -9,8 +9,7 @@ const setupInterceptors = (instance) => {
     (error) => {
       if (error.response?.status === 401) {
         const authStore = useAuthStore()
-        if (authStore.user) {
-          authStore.clearUser()
+        if (authStore.me) {
           router.push('/login')
         }
       }
