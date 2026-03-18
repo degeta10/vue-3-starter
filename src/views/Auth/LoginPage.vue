@@ -3,8 +3,9 @@
     <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
       <h2 class="text-2xl font-bold mb-6 text-center">{{ $t('auth.loginTitle') }}</h2>
       <div
-        v-if="loginApiErrors?.errors?.length === 0"
+        v-if="loginApiErrors.success === false && !loginApiErrors?.errors"
         class="mb-4 p-3 bg-red-100 text-red-700 rounded"
+        role="alert"
       >
         {{ loginApiErrors.message }}
       </div>

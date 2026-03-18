@@ -3,16 +3,18 @@
     <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
       <h2 class="text-2xl font-bold mb-6 text-center">{{ $t('profile.title') }}</h2>
       <div
-        v-if="profileApiErrors?.errors?.length === 0"
+        v-if="profileApiErrors.success === false && !profileApiErrors?.errors"
         class="mb-4 p-3 bg-red-100 text-red-700 rounded"
+        role="alert"
       >
         {{ profileApiErrors.message }}
       </div>
       <div
-        v-if="profileApiSuccess?.message === $t('profile.updateSuccess')"
+        v-if="profileApiSuccess"
         class="mb-4 p-3 bg-green-100 text-green-700 rounded"
+        role="alert"
       >
-        {{ profileApiSuccess.message }}
+        {{ $t('profile.updateSuccess') }}
       </div>
       <form @submit.prevent="updateMe">
         <div class="mb-4">
@@ -24,9 +26,6 @@
             id="email"
             disabled
           />
-          <p v-if="profileApiErrors?.email" class="text-red-500 text-sm mt-1">
-            {{ profileApiErrors.email }}
-          </p>
         </div>
         <div class="mb-4">
           <label class="block text-gray-700 mb-2" for="username">{{ $t('profile.name') }}</label>
@@ -36,8 +35,8 @@
             type="text"
             id="username"
           />
-          <p v-if="profileApiErrors?.name" class="text-red-500 text-sm mt-1">
-            {{ profileApiErrors.name }}
+          <p v-if="profileApiErrors?.errors?.name" class="text-red-500 text-sm mt-1">
+            {{ profileApiErrors.errors.name[0] }}
           </p>
         </div>
         <div class="mb-6">
@@ -79,7 +78,7 @@
 </template>
 <script setup>
 import { useAuthStore } from '@/stores/auth'
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
@@ -89,12 +88,13 @@ const username = ref(currentUser.name)
 const email = ref(currentUser.email)
 const password = ref('')
 const passwordConfirmation = ref('')
-const profileApiErrors = ref(null)
-const profileApiSuccess = ref(null)
+const profileApiErrors = ref('')
+const profileApiSuccess = ref(false)
 
 const updateMe = async () => {
   try {
-    profileApiErrors.value = null
+    profileApiErrors.value = ''
+    profileApiSuccess.value = false
     await authStore.updateMe({
       name: username.value,
       email: email.value,
@@ -102,23 +102,9 @@ const updateMe = async () => {
         ? { password: password.value, password_confirmation: passwordConfirmation.value }
         : {}),
     })
-    profileApiSuccess.value = { message: t('profile.updateSuccess') }
+    profileApiSuccess.value = true
   } catch (error) {
     profileApiErrors.value = error.response?.data || { message: t('profile.updateFailed') }
   }
 }
-
-watch(profileApiSuccess, (newVal) => {
-  if (newVal?.message === t('profile.updateSuccess')) {
-    setTimeout(() => {
-      profileApiSuccess.value = null
-    }, 2000)
-  }
-})
-
-watch(profileApiSuccess, (newVal, oldVal) => {
-  if (oldVal?.message === t('profile.updateSuccess') && newVal === null) {
-    clearTimeout(profileApiSuccess.value)
-  }
-})
 </script>
