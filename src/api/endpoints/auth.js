@@ -3,7 +3,7 @@ export const AUTH_V1 = {
   LOGIN: '/auth/login',
   LOGOUT: '/auth/logout',
   REGISTER: '/auth/register',
-  ME: '/auth/me',
+  ME: '/me',
 }
 
 // MANAGE OTHER VERSIONS WITH SAME POSTFIX
